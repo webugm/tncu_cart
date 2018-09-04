@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>google api</title>
+  </head>
+  <body>
+    <h1 class="text-center">google api</h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-9">
+          <div>
+            接著我們舉例說明如何使用，基本網址樣式有兩種(參考此篇)，分別如下：<br>
+            https://spreadsheets.google.com/feeds/cells/{key}/{sheet index}/public/values<br>
+            https://spreadsheets.google.com/feeds/list/{key}/{sheet index}/public/values<br>
+          </div>
+          <div>
+            <a href="https://spreadsheets.google.com/feeds/cells/1Gq8eCOzeUXxYzqnSDz9UoRIS_6fPbycEmDI4BNN_UTY/1/public/values?alt=json" target='_blank'>cells - json</a>
+            <br>
+            <a href="https://spreadsheets.google.com/feeds/list/1Gq8eCOzeUXxYzqnSDz9UoRIS_6fPbycEmDI4BNN_UTY/1/public/values?alt=json" target='_blank'>list - json</a>
+            <a id="button">
+              11111
+            </a>
+
+            <div id="test">
+              
+            </div>
+
+            
+          </div>
+        </div>
+        <div class="col-sm-3"> 
+          <a href="">工作表</a>    
+        </div>        
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("button").click(function(){
+          $.getJSON("https://spreadsheets.google.com/feeds/cells/1Gq8eCOzeUXxYzqnSDz9UoRIS_6fPbycEmDI4BNN_UTY/1/public/values?alt=json",function(result){
+            $.each(result, function(i, field){
+              $("#test").append(field + " ");
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

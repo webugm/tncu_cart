@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Basic Google Spreadsheet to JSON Example</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+		<script src="../../jquery-google-sheet-to-json.min.js"></script>
+		<script>
+		  $(document).ready(function(){
+
+		  	// use your spreadsheet id here
+		  	var SPREADSHEET_ID = '1Gq8eCOzeUXxYzqnSDz9UoRIS_6fPbycEmDI4BNN_UTY'
+		  	$.googleSheetToJSON(SPREADSHEET_ID)
+		  		.done(function(rows){
+		  			// each row is a row of data from the spreadsheet
+		  			console.log(rows);
+		  		})
+		  		.fail(function(err){
+		  			console.log('error!', err);
+		  		});
+		  	});
+		  });
+		</script>
+		<style>
+			dl{
+			border-top: 1px solid black;
+			margin-top: 1.0em;
+			padding-top: 1.0em;
+			}
+
+			dt{
+			font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="https://docs.google.com/spreadsheets/d/1Gq8eCOzeUXxYzqnSDz9UoRIS_6fPbycEmDI4BNN_UTY/edit#gid=133784872">The Spreadsheet</a>
+	</body>
+</html>
