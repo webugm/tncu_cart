@@ -23,15 +23,34 @@
   <body>
     <script>
       $(function(){
-            var sn = [];
-            var title = [];
-            $.getJSON('https://spreadsheets.google.com/feeds/list/11bu19qy39prfZDEum8NpeNt76-1yQu3ZUioKcVodvUQ/od6/public/values?alt=json', function (data){
-                console.log(data.feed.entry);
+            var cell = [];
+            var row = "";
+            var col = "";
+
+            $.getJSON('https://spreadsheets.google.com/feeds/cells/11bu19qy39prfZDEum8NpeNt76-1yQu3ZUioKcVodvUQ/1/public/values?alt=json', function (data){
+                //console.log(data.feed.entry);
+                // console.log(data.feed.entry[0].gs$cell.row);
+                // console.log(data.feed.entry[0].gs$cell.col);
+                // console.log(data.feed.entry[0].gs$cell.$t);
+                // //console.log(data.feed.entry.length);
                 for (var i=0; i < data.feed.entry.length; i++){
-                  sn[i] = data.feed.entry[i].gsx$sn.$t;
-                  title[i] = data.feed.entry[i].gsx$title.$t;
-                  $('#producttable').append("<tr><td>" + sn[i] + "</td><td>" + title[i] + "</td></tr>");
+                  row = data.feed.entry[i].gs$cell.row;
+                  col = data.feed.entry[i].gs$cell.col;
+                  if(!Array.isArray(cell[row])){
+                    cell[row]= new Array();
+                  }
+                  if(!Array.isArray(cell[row][col])){
+                    cell[row][col]= new Array();
+                  }                    
+                  cell[row][col] = data.feed.entry[i].gs$cell.$t;
+                  
+                  //$('#producttable').append("<tr><td>" + row + "</td><td>" + title[i] + "</td></tr>");
                 }
+                cell.forEach(function(e) {
+                  $('#producttable').append("<tr><td>" + e[1] + "</td><td>" + e[2] + "</td></tr>");
+                  console.log(e);
+                });
+                //console.log(cell);
             });
         });
     </script>

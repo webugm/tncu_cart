@@ -3,8 +3,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">         
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>   -->
-    <script src="https://code.jquery.com/jquery-migrate-1.2.1.js"></script>        
+    <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>  
+    <!-- <script src="https://code.jquery.com/jquery-migrate-1.2.1.js"></script>         -->
     <style>
      .loading {
        display:none;
@@ -29,12 +29,11 @@
     <script>
       $(document).ready(function() {      
          $("#bt1").click(function(e){   
-          var url1 = "https://spreadsheets.google.com/feeds/list/17WWb15-jLlcJdPScRjjThiDU5P8KfAnJD5fnJ78SoQE/od6/public/values?alt=json";
-          var url2 = "https://spreadsheets.google.com/feeds/list/11bu19qy39prfZDEum8NpeNt76-1yQu3ZUioKcVodvUQ/od6/public/values?alt=json";                       
+          var url1 = "https://spreadsheets.google.com/feeds/list/17WWb15-jLlcJdPScRjjThiDU5P8KfAnJD5fnJ78SoQE/od6/public/values?alt=json";                      
           var str = "";
           $.ajax({
             type: "get",
-            url: url2,
+            url: url1,
             dataType: "jsonp",
             success: function(data){
               console.log(data);
